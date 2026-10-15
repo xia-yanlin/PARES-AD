@@ -1,0 +1,15 @@
+{
+  "id": "PARES_AD_OBSERVED_PAIR_FEASIBILITY_2026_10_09",
+  "stage": "Feasibility only, before new paired model-output or ROI-change results",
+  "authorization_context": "Active user goal to substantively improve PARES-AD scientific results; this checks a bounded extension of behavioral reconstruction, not FW6 or clinical progression prediction",
+  "scientific_question": "Can the existing source-fitted anatomical behavior reconstruction account for changes in fixed classifier output between two real scans from the same development-isolated participant, beyond a scalar anatomical-reference comparator?",
+  "distinctness": "Natural observed follow-up pairs, not the stopped synthetic local-perturbation experiment or the prior scanner-switch/cross-pipeline cognition analyses. Does not revive their failed gates.",
+  "anchor_population": "Original 882 development-isolated confirmation participants and their original first eligible scans; existing baseline outcomes already known",
+  "followup_rule": "Use the same participant's raw PHC FreeSurfer scan 180 to 730 days after the anchor, inclusive. Require identical canonical phase, manufacturer, field strength and nonmissing exact ScannerBatchName. Choose closest to 365 days; any tie at best absolute distance excludes that participant. One pair per participant.",
+  "numeric_eligibility": "All 163 original non-ComBat raw model inputs finite and strictly positive at both endpoints; no ROI-change thresholds, outlier trimming, or target-output access",
+  "outcome_role": "Follow-up diagnosis is not a selection criterion because the proposed target is model-output change, not disease progression or error rate. Recheck baseline full diagnosis uniqueness against the original protocol.",
+  "feasibility_floor": "At least 100 eligible people overall and at least three source acquisition domains with at least 20 people each. This is an operational floor for a bounded pooled analysis, not a sample-size/power guarantee. All eligible domains remain in the planned report; no exclusion of sparse domains to improve effects.",
+  "stop_rule": "If the fixed feasibility floor fails, stop this route without changing dates, metadata or counts. Passing feasibility does not establish functional fidelity.",
+  "not_claimed": ["Prospective clinical prognosis", "Independent external program", "Causal neuronal use", "Physical scanner identity from batch metadata", "Biological progression from cross-sectional FreeSurfer changes", "Human benefit", "New independent participant replication"],
+  "next_stage_if_feasible": "Freeze a separate evaluation protocol and comparator before new paired MRI classifier inference; retain the original 882-person primary endpoint unchanged."
+}

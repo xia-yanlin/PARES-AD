@@ -1,0 +1,7 @@
+# Versions used for the synthetic tests (tools/run_tests.py) and the parity check
+# Synthetic tests: Python 3.13.16
+numpy==2.5.3
+pandas==3.0.5
+scipy==1.18.1
+scikit-learn==1.9.1
+# Parity check (tests/parity_with_saved_scores.py): Python 3.10.12, numpy 2.2.6, pandas 2.3.3

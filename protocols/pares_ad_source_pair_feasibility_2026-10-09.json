@@ -1,0 +1,19 @@
+{
+  "status": "FROZEN_BEFORE_SOURCE_PAIR_COUNTS",
+  "created_utc": "2026-10-09T09:28:52.489331+00:00",
+  "authorization": "User-authorized method redesign within PARES-AD, feasibility before learning real within-person behavior changes. No FW6, no resumption of failed synthetic perturbation trial.",
+  "anchor_population": "Only650 people with saved source development predictions; use exactly the baseline scan already used by their classifiers, not a newly selected anchor.",
+  "anchor_link": "Exact participant+PHC_LONIUID+scan date to raw PHC table. Require a unique record and identical canonical phase/vendor/field and exact nonmissing ScannerBatchName. Verify all163 model inputs equal to source baseline within1e-10; no fuzzy image matching.",
+  "followup_rule": "Same previous natural-pair rule:180-730 days inclusive, same canonical phase/manufacturer/field and exact nonmissing ScannerBatchName; all163 inputs finite and strictly positive; nearest365 days, any best-distance tie excludes. One pair per person. No followup diagnosis or feature/output change selection.",
+  "isolation": "No source person may overlap the original882 confirmation cohort or402 retained confirmation pairs. Do not inspect ROI changes or new model predictions in feasibility.",
+  "operational_floors": {
+    "minimum_total_pairs": 100,
+    "minimum_domains_with20": 3,
+    "each_target_domain_min_other_domain_pairs": 50,
+    "each_target_domain_min_other_domains_with10": 2
+  },
+  "floor_interpretation": "Operational fit feasibility, not a statistical-power or clinical-effect guarantee; report all original development domains including sparse ones.",
+  "stop_rule": "Fail any floor or unresolved original anchor identity: stop this method path without widening windows or changing pairing.",
+  "next_stage_if_feasible": "Freeze fixed linear delta-learning comparison and source evaluation criteria before any new source followup classifier inference. Use same-teacher supervision, compare original level-trained four-concept mapping and matched scalar delta model; no new ROI/features or model-complexity grid.",
+  "scope": "Method feasibility only, not empirical improvement or new independent confirmation."
+}

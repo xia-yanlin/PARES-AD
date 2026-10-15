@@ -1,0 +1,123 @@
+{
+  "freeze_id": "CRUA-AD-FW0-MODELS-v2.1",
+  "frozen_date": "2026-07-18",
+  "status": "FROZEN",
+  "input_contract": {
+    "source": "existing ADNI baseline non-ComBat FreeSurfer ROI columns",
+    "nodes": 94,
+    "node_features": [
+      "cortical thickness (0 plus node-type indicator for subcortical nodes)",
+      "log ROI volume residualized on log eTIV using the current training partition only",
+      "is_subcortical"
+    ],
+    "imputation": "training-partition median only",
+    "standardization": "training-partition mean and standard deviation only",
+    "forbidden_predictors": [
+      "ADNI phase",
+      "scanner manufacturer",
+      "field strength",
+      "scanner batch",
+      "acquisition-domain identity",
+      "diagnosis-derived variables other than the training target"
+    ],
+    "combat_input": "sensitivity analysis only"
+  },
+  "common_training": {
+    "seeds": [7, 42, 123, 202, 314],
+    "optimizer": "AdamW",
+    "loss": "binary cross entropy with training-partition positive-class weight",
+    "batch_size": 32,
+    "max_epochs": 120,
+    "early_stopping": {
+      "metric": "AUROC",
+      "mode": "max",
+      "patience": 20,
+      "minimum_delta": 0.0001,
+      "validation_fraction": 0.15,
+      "split": "deterministic label-stratified subset of the current training partition only",
+      "forbidden_rows": "current inner-validation and outer-test domains"
+    },
+    "calibration": {
+      "method": "Platt scaling",
+      "fit_rows": "training-only early-stopping subset after model fitting",
+      "outer_or_inner_heldout_rows_used": false
+    },
+    "selection_metric": "equal-domain macro AUROC",
+    "representation_layers": ["penultimate", "logits"]
+  },
+  "neural_families": [
+    {
+      "family": "flat_mlp",
+      "adapter": "FlatMLPAdapter",
+      "description": "Flattened ROI feature vector followed by a subject-level MLP",
+      "configurations": [
+        {"id": "mlp_h64", "hidden_dims": [64], "dropout": 0.20, "learning_rate": 0.001, "weight_decay": 0.0001},
+        {"id": "mlp_h128_64", "hidden_dims": [128, 64], "dropout": 0.25, "learning_rate": 0.001, "weight_decay": 0.0001},
+        {"id": "mlp_h64_32_reg", "hidden_dims": [64, 32], "dropout": 0.40, "learning_rate": 0.001, "weight_decay": 0.0005}
+      ]
+    },
+    {
+      "family": "no_edge_roi_encoder",
+      "adapter": "NoEdgeROIAdapter",
+      "description": "Shared node encoder plus frozen node identity embedding; no inter-ROI edges",
+      "configurations": [
+        {"id": "noedge_n16_e4", "node_hidden": 16, "node_embedding": 4, "head_hidden": 64, "dropout": 0.20, "learning_rate": 0.001, "weight_decay": 0.0001},
+        {"id": "noedge_n32_e8", "node_hidden": 32, "node_embedding": 8, "head_hidden": 64, "dropout": 0.25, "learning_rate": 0.001, "weight_decay": 0.0001},
+        {"id": "noedge_n64_e8_reg", "node_hidden": 64, "node_embedding": 8, "head_hidden": 32, "dropout": 0.40, "learning_rate": 0.001, "weight_decay": 0.0005}
+      ]
+    },
+    {
+      "family": "gcn",
+      "adapter": "GCNAdapter",
+      "description": "Two-layer GCN with structural-covariance edges rebuilt from each training partition",
+      "configurations": [
+        {"id": "gcn_top6_h32_mean", "top_k": 6, "hidden_dim": 32, "node_embedding": 4, "readout": "mean", "dropout": 0.20, "learning_rate": 0.003, "weight_decay": 0.0005},
+        {"id": "gcn_top6_h64_meanmax", "top_k": 6, "hidden_dim": 64, "node_embedding": 8, "readout": "meanmax", "dropout": 0.20, "learning_rate": 0.003, "weight_decay": 0.0001},
+        {"id": "gcn_top10_h64_reg", "top_k": 10, "hidden_dim": 64, "node_embedding": 8, "readout": "meanmax", "dropout": 0.35, "learning_rate": 0.003, "weight_decay": 0.0005}
+      ]
+    },
+    {
+      "family": "gat",
+      "adapter": "GATAdapter",
+      "description": "Two-layer GAT with structural-covariance edges rebuilt from each training partition",
+      "configurations": [
+        {"id": "gat_top6_h32_head1", "top_k": 6, "hidden_dim": 32, "attention_heads": 1, "node_embedding": 4, "readout": "mean", "dropout": 0.20, "learning_rate": 0.003, "weight_decay": 0.0001},
+        {"id": "gat_top6_h64_head2", "top_k": 6, "hidden_dim": 64, "attention_heads": 2, "node_embedding": 8, "readout": "meanmax", "dropout": 0.20, "learning_rate": 0.003, "weight_decay": 0.0001},
+        {"id": "gat_top6_h64_head4_reg", "top_k": 6, "hidden_dim": 64, "attention_heads": 4, "node_embedding": 8, "readout": "meanmax", "dropout": 0.35, "learning_rate": 0.003, "weight_decay": 0.0005}
+      ]
+    }
+  ],
+  "strong_references": [
+    {
+      "family": "logistic_regression",
+      "implementation": "sklearn LogisticRegression",
+      "configurations": [
+        {"id": "lr_c0_1", "C": 0.1},
+        {"id": "lr_c1", "C": 1.0},
+        {"id": "lr_c10", "C": 10.0}
+      ],
+      "fixed": {"penalty": "l2", "class_weight": "balanced", "max_iter": 5000}
+    },
+    {
+      "family": "rbf_svm",
+      "implementation": "sklearn SVC plus common Platt calibration",
+      "configurations": [
+        {"id": "svm_c0_1", "C": 0.1},
+        {"id": "svm_c1", "C": 1.0},
+        {"id": "svm_c10", "C": 10.0}
+      ],
+      "fixed": {"kernel": "rbf", "gamma": "scale", "class_weight": "balanced", "probability": false}
+    },
+    {
+      "family": "hist_gradient_boosting",
+      "implementation": "sklearn HistGradientBoostingClassifier; prespecified comparable tree ensemble because xgboost is not installed",
+      "configurations": [
+        {"id": "hgb_leaf15", "max_leaf_nodes": 15, "learning_rate": 0.05, "max_iter": 150},
+        {"id": "hgb_leaf31", "max_leaf_nodes": 31, "learning_rate": 0.05, "max_iter": 200},
+        {"id": "hgb_leaf15_fast", "max_leaf_nodes": 15, "learning_rate": 0.10, "max_iter": 100}
+      ],
+      "fixed": {"l2_regularization": 0.1, "class_weight": "balanced"}
+    }
+  ],
+  "optional_families": ["GraphSAGE", "BrainGNN", "graph transformer", "pooling models"]
+}

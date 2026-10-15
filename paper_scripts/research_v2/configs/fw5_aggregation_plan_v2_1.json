@@ -1,0 +1,29 @@
+{
+  "freeze_id": "CRUA-AD-FW5-OUTER-AGGREGATION-v2.1",
+  "frozen_date": "2026-07-21",
+  "status": "FROZEN_BEFORE_OUTER_ACCESS",
+  "source_plan": "configs/fw5_outer_evaluation_plan_v2_1.json",
+  "required_outputs": [
+    "configuration_outer_predictions.csv",
+    "configuration_outer_metrics.csv",
+    "rule_outer_predictions.csv",
+    "rule_domain_metrics.csv",
+    "e1_primary_endpoint.json",
+    "e2_pooled_metrics.csv",
+    "e3_performance_matched_profiles.csv",
+    "e4_encoding_use_associations.csv",
+    "e5_profile_stability_associations.csv",
+    "e6_acquisition_failure_associations.csv",
+    "e7_failure_taxonomy.csv",
+    "stable_domain_rule_summary.csv"
+  ],
+  "invariants": [
+    "five seeds per outer-domain configuration and identical subject coverage",
+    "one seed-mean probability per subject and configuration",
+    "one paired performance-only and audit-guided prediction per eligible outer subject",
+    "same-configuration rule pairs are exactly identical",
+    "no selection identifiers are recomputed from outer outcomes",
+    "poor-performing valid runs remain present"
+  ],
+  "privacy": "all endpoint values and selected identifiers remain private; safe completion log contains only counts, checks, and hashes"
+}

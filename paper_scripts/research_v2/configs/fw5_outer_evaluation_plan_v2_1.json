@@ -1,0 +1,64 @@
+{
+  "freeze_id": "CRUA-AD-FW5-OUTER-EVALUATION-v2.1",
+  "frozen_date": "2026-07-21",
+  "status": "FROZEN_BEFORE_OUTER_ACCESS",
+  "scope": "all FW2 performance-eligible neural configurations, with paired frozen performance-only and audit-guided rule reporting",
+  "outer_access_authorization": "permitted only after this plan, the private manifest, and its tracked hash definition are frozen",
+  "refit_unit": "outer domain by eligible configuration by seed",
+  "formal_scope": {
+    "eligible_outer_configuration_units": 58,
+    "seeds_per_unit": 5,
+    "formal_jobs": 290,
+    "outer_domains": 7
+  },
+  "training_contract": {
+    "training_pool": "all non-outer subjects, including frozen stress-only training subjects",
+    "fit_calibration_split": "deterministic label-stratified 85/15 split of the non-outer training pool separately for each frozen seed",
+    "preprocessing": "fit only on model-fit rows",
+    "graph_construction": "fit only on model-fit rows for graph families",
+    "early_stopping": "the frozen calibration subset; outer rows forbidden",
+    "calibration": "Platt scaling fit on the same non-outer calibration subset after checkpoint selection",
+    "decision_threshold": 0.5,
+    "outer_recalibration": false,
+    "maximum_epochs": 120
+  },
+  "seed_aggregation": {
+    "prediction": "arithmetic mean of the five calibrated outer probabilities for each subject and configuration",
+    "metrics": "computed once from the seed-mean subject probabilities",
+    "seed_is_independent_sample": false
+  },
+  "selection_lock": {
+    "performance_only": "exactly the seven selections frozen by FW2",
+    "audit_guided": "exactly the seven selections frozen by FW4",
+    "recomputation_after_outer_access": "forbidden"
+  },
+  "endpoint_execution": {
+    "E1": "paired equal-domain macro AUROC difference, audit-guided minus performance-only",
+    "E2": "paired pooled out-of-domain discrimination, threshold, Brier, calibration, and ECE metrics",
+    "P3": "repeat rule-level equal-domain macro summaries on the five stable domains frozen before outcomes",
+    "E3": "inner-only named profile rows for configurations within 0.02 of the best inner macro AUROC in each outer loop",
+    "E4": "Spearman and standardized HC3 association between penultimate linear full-sample selectivity and valid random-corrected use",
+    "E5": "Spearman and standardized HC3 association between joint-use inner-domain variance and outer AUROC loss, adjusted for inner AUROC, calibration distance, and log parameter count when at least 10 complete rows exist",
+    "E6": "continuous acquisition decodability/use associations with outer AUROC loss; nonvarying or fewer-than-10 components are explicitly not estimable",
+    "E7": "descriptive evidence-based taxonomy using only rules frozen here and previously frozen inner evidence"
+  },
+  "uncertainty": {
+    "bootstrap_replicates": 10000,
+    "random_seed": 20260721,
+    "E1": "resample domains with replacement, then subjects stratified by label within each sampled domain; both rules share every resample",
+    "E2": "paired subject resampling stratified jointly by outer domain and label",
+    "interval": "percentile 95 percent"
+  },
+  "taxonomy": {
+    "material_auroc_loss": 0.02,
+    "audit_invalid": "one or more invalid J_C006/C_C007 inner-domain conditions",
+    "acquisition_reliance": "one or more frozen validated S001/S002/S003 acquisition-use violations",
+    "calibration_only_drift": "outer AUROC loss is at most 0.02 and outer Brier exceeds the inner-domain macro Brier",
+    "prevalence_composition_sensitivity": "absolute outer versus non-outer prevalence difference is at least 0.05 and outer AUROC loss exceeds 0.02",
+    "unexplained_residual_failure": "outer AUROC loss exceeds 0.02 without a prior assigned evidence category",
+    "no_material_failure": "outer AUROC loss is at most 0.02 without calibration-only drift",
+    "disease_evidence_loss": "not assigned without a separate outer-domain validated-use intervention; never inferred from performance alone",
+    "acquisition_encoding": "retained as continuous E6 evidence; no post-outcome high/low threshold is introduced"
+  },
+  "privacy": "outer predictions, metrics, configuration identifiers, endpoint estimates, and taxonomy rows remain under outputs/private; tracked logs contain counts, checks, and hashes only"
+}

@@ -1,0 +1,68 @@
+{
+  "freeze_id": "CRUA-AD-FW0-AUDIT-SELECTION-v2.1",
+  "frozen_date": "2026-07-18",
+  "status": "FROZEN",
+  "metric_direction": {
+    "AUROC": "baseline minus removed; positive means task degradation",
+    "AUPRC": "baseline minus removed; positive means task degradation",
+    "Brier": "removed minus baseline; positive means task degradation",
+    "ECE": "removed minus baseline; positive means task degradation"
+  },
+  "removal_validity": {
+    "continuous_target": {
+      "valid_if": "held-out excess probe association is reduced by at least 90 percent OR post-removal absolute Pearson correlation is at most 0.20",
+      "minimum_excess_reduction_fraction": 0.90,
+      "equivalence_absolute_pearson_r": 0.20
+    },
+    "categorical_target": {
+      "valid_if": "held-out excess probe discrimination is reduced by at least 90 percent OR post-removal AUROC is within 0.45 to 0.55",
+      "minimum_excess_reduction_fraction": 0.90,
+      "equivalence_auroc_lower": 0.45,
+      "equivalence_auroc_upper": 0.55
+    },
+    "matched_random_controls": 200,
+    "random_match_variables": ["removed rank", "training representation distortion", "training and evaluation partitions"],
+    "empirical_one_sided_alpha": 0.05,
+    "empirical_p_formula": "(1 + count(random effect >= semantic effect)) / 201",
+    "collateral_damage_flag": "any registered non-target held-out selectivity loses at least 50 percent relative to baseline",
+    "primary_direction_confirmation": "ROI/input intervention must agree in direction; disagreement makes the primary use claim inconclusive",
+    "invalid_result_label": "invalid_or_inconclusive_not_zero_use"
+  },
+  "use_effect": {
+    "raw_use": "task metric degradation after semantic removal",
+    "excess_use": "raw use minus mean matched-random raw use",
+    "prespecified_direction": "positive task degradation",
+    "acquisition_use_violation": {
+      "conditions": [
+        "removal is valid",
+        "empirical one-sided p is at most 0.05",
+        "excess AUROC degradation is at least 0.01"
+      ],
+      "minimum_excess_auroc_drop": 0.01
+    }
+  },
+  "performance_matching": {
+    "mechanism_comparison_absolute_auroc_band": 0.02,
+    "one_standard_error_unit": "inner held-out acquisition domain after averaging seeds",
+    "eligible_if": "configuration mean inner-domain AUROC is at least best mean minus the standard error of the best configuration"
+  },
+  "selection_rules": {
+    "performance_only": [
+      "restrict to the one-standard-error eligible set",
+      "smaller mean absolute calibration-slope distance from 1",
+      "lower parameter count",
+      "lexical configuration id as deterministic final tie-break"
+    ],
+    "audit_guided": [
+      "restrict to the identical one-standard-error eligible set",
+      "prefer zero invalid four-core-joint or conditional-hippocampal removal conditions; otherwise fewer invalid conditions",
+      "fewer validated acquisition-use violations across manufacturer, field strength, phase, and domain identity",
+      "lower sample variance across inner domains of four-core-joint excess AUROC use after seed averaging",
+      "higher median valid conditional-hippocampal excess AUROC use across inner domains",
+      "smaller mean absolute calibration-slope distance from 1",
+      "lower parameter count",
+      "lexical configuration id as deterministic final tie-break"
+    ]
+  },
+  "outer_domain_prohibition": "No outer-domain labels, metrics, probes, audit effects, or calibration outcomes may alter thresholds or selection."
+}

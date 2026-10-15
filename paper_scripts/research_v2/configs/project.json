@@ -1,0 +1,72 @@
+{
+  "project_id": "CRUA-AD",
+  "version": "0.2.0-feasible",
+  "created_date": "2026-07-18",
+  "root_resolution": "relative_to_research_v2",
+  "paths": {
+    "data_registry": "data_registry",
+    "protocols": "protocols",
+    "outputs": "outputs",
+    "logs": "logs"
+  },
+  "fw0_freeze": {
+    "status": "FROZEN",
+    "date": "2026-07-18",
+    "domain_definition": "data_registry/acquisition_domain_definition.json",
+    "model_registry": "configs/model_registry_v2_1.json",
+    "concept_registry": "data_registry/concept_registry_v2_1_feasible.csv",
+    "endpoint_registry": "data_registry/endpoint_registry_v2_1_feasible.csv",
+    "decision_registry": "data_registry/decision_registry_v2_1_feasible.csv",
+    "audit_selection_rules": "configs/audit_selection_rules_v2_1.json"
+  },
+  "core_study": {
+    "status": "ACTIVE",
+    "protocol": "protocols/protocol_v2_1_feasible.md",
+    "sap": "protocols/statistical_analysis_plan_v2_1_feasible.md",
+    "data_source": "existing_adni_noncombat_roi",
+    "primary_generalization_scope": "within_ADNI_acquisition_domains",
+    "forbidden_claims_without_optional_evidence": [
+      "independent_cohort_validation",
+      "cross_dataset_generalization",
+      "clinician_validated_usability",
+      "clinical_deployment_readiness"
+    ]
+  },
+  "optional_modules": {
+    "aibl_external_validation": "INACTIVE",
+    "independent_domain_expert_review": "INACTIVE",
+    "raw_mri_uniform_reprocessing": "INACTIVE"
+  },
+  "external_lock": {
+    "status": "LOCKED",
+    "unlock_requires": [
+      "protocol_and_sap_frozen",
+      "concept_registry_expert_signed",
+      "model_configs_frozen",
+      "audit_thresholds_frozen",
+      "selection_rules_frozen",
+      "aibl_access_approved",
+      "external_manifest_verified"
+    ],
+    "forbidden_uses_before_unlock": [
+      "hyperparameter_selection",
+      "early_stopping",
+      "concept_threshold_selection",
+      "audit_weight_learning",
+      "model_selection",
+      "result_driven_protocol_changes"
+    ]
+  },
+  "security": {
+    "participant_level_data_allowed_in_git": false,
+    "participant_level_data_allowed_in_public_ai": false,
+    "logs_may_contain_subject_ids": false,
+    "reports_may_contain_participant_rows": false,
+    "allowed_public_artifacts": [
+      "code",
+      "configuration_without_paths_or_credentials",
+      "synthetic_fixtures",
+      "aggregate_statistics_after_dua_review"
+    ]
+  }
+}

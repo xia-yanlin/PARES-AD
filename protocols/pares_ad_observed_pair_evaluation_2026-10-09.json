@@ -1,0 +1,24 @@
+{
+  "id": "PARES_AD_OBSERVED_PAIR_BEHAVIOR_EVALUATION_2026_10_09",
+  "timing": "Recorded after metadata-only feasibility, before follow-up classifier predictions or paired change results",
+  "role": "New prespecified extension within an already studied ADNI participant cohort; not independent participant confirmation or external validation",
+  "purpose": "Test whether source-fitted four-feature anatomical behavior reconstruction captures natural within-person classifier-output variation beyond scalar reference information and a fixed four-feature anatomical control",
+  "population": "All 402 pairs from the frozen feasibility manifest, including both participants in sparse ADNI4 Siemens; no outcome-based or domain-based exclusions",
+  "classifier": "Existing 290 source seed checkpoints and original calibration/ROI preprocessing; apply only each pair's corresponding outer-domain models; average the same five seed probabilities before logit, clipped to [0.0001,0.9999] as in the original pipeline",
+  "target": "Observed follow-up minus anchor calibrated model logit, not a diagnosis or a clinical progression outcome",
+  "predictors": {
+    "AD4": "Original source-domain StandardScaler plus Ridge(alpha=1) from four severity features to model logit; subtract the two visit predictions. Same acquisition indicators at both visits, so original additive acquisition component cancels.",
+    "REF1": "StandardScaler plus Ridge(alpha=1) from the original transparent reference's clipped logit to model logit, fitted on the same source rows as AD4; subtract visit predictions.",
+    "CONTROL4": "StandardScaler plus Ridge(alpha=1) from fixed caudate, pallidum, pericalcarine and precentral features to model logit, using original source-domain preprocessing and identical source rows; subtract visit predictions.",
+    "ZERO": "No-change prediction, descriptive baseline"
+  },
+  "fit_scope": "For each configuration/evaluated domain, only original source outer predictions from other domains. No confirmation/follow-up fitting, hyperparameter tuning, new ROI search, or outcome-based selection.",
+  "primary_metric": "Absolute error in predicted logit change. First average errors over each participant's available configurations, then average equally over participants.",
+  "co_primary_contrasts": ["MAE_REF1 minus MAE_AD4", "MAE_CONTROL4 minus MAE_AD4"],
+  "uncertainty": "2000 paired participant bootstrap resamples, seed 20261010, retaining all configurations per selected participant. Fixed predictions, no refitting; nominal percentile 95% intervals.",
+  "bounded_positive_criterion": "Both contrast intervals have lower bound above zero, both point relative MAE reductions are at least 10%, and AD4 has smaller MAE than each comparator in at least 7 of 9 configurations. The 10% threshold is a prespecified practical signal threshold, not a clinical minimum benefit.",
+  "secondary_reporting": "All four MAEs, observed change scale, signed bias, configuration and domain results including sparse domains; no diagnostic accuracy, clinical or causal inference",
+  "validation": ["Original-anchor model probabilities reproduce cached confirmation probabilities within absolute 1e-6", "Every scan/config has exactly five frozen seeds", "Pair members share source-domain models and metadata", "Same subject/scan/config keys for all methods", "Independent recomputation of paired aggregate losses and intervals"],
+  "failure_rule": "If any co-primary criterion fails, retain the failure; do not change pair windows, cohorts, comparators, thresholds or selection rules to seek a passing result",
+  "interpretation": "Passing supports natural within-person behavioral reconstruction relative to specified comparators in this dataset. It does not establish local intervention fidelity, human report utility, clinical progression, disease causality, or attainment of the overall scientific-strengthening goal."
+}

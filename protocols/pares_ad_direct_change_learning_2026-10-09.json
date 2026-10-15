@@ -1,0 +1,36 @@
+{
+  "status": "FROZEN_BEFORE_SOURCE_FOLLOWUP_INFERENCE",
+  "created_utc": "2026-10-09T09:31:59.614390+00:00",
+  "authorization": "User authorized method redesign. This is natural-change behavior reconstruction, not clinical progression, FW6 or the stopped synthetic local trial.",
+  "motivation": "Two previous methods improved cross-sectional level approximation but did not establish individual-change increment. Test whether matching the training target to observed output differences improves this property.",
+  "source_pairs": "Use all218 pairs in frozen source feasibility manifest; no replacement, trimming, additional visits or diagnosis-based selection.",
+  "target": "For each frozen target-domain/configuration ensemble, logit(mean calibrated followup probability)-logit(mean calibrated anchor probability); original5 seeds, clipping[1e-4,1-1e-4].",
+  "source_inference": "Replay existing290 frozen checkpoints on source followups only; reuse saved teacher-consistent baseline probabilities. No new MRI training/calibration.",
+  "features": "Replay identical baseline-outside-target-domain concept transforms and reference; verify frozen baseline feature values. Four severity deltas or scalar reference-logit delta. No elapsed time, extra ROI, interaction or new disease label input.",
+  "models": {
+    "LEVEL_AD4": "Previously saved exact-teacher source level reconstruction; apply its linear coefficients to feature differences. No refit.",
+    "DELTA_AD4": "Train StandardScaler(with_mean=False)+Ridge(alpha=1,fit_intercept=False) on four feature deltas and teacher-logit deltas. Zero feature change gives zero estimated change.",
+    "DELTA_REF1": "Same training people, target, scaling and fixed ridge settings on reference-logit delta alone."
+  },
+  "source_evaluation": "For each target domain and configuration, fit change model on all source pairs outside target domain; evaluate all available pairs in target domain. Check original teacher membership excludes target participants. No hyperparameter selection.",
+  "primary": "Equal participant-weight mean absolute change error, averaging available configurations within person.",
+  "contrasts": [
+    "LEVEL_AD4 minus DELTA_AD4",
+    "DELTA_REF1 minus DELTA_AD4"
+  ],
+  "gate": "Both comparisons: at least10% relative MAE reduction,95% paired participant interval lower>0,and at least7/9 configuration directions. Same pragmatic development criterion, not a clinical effect threshold.",
+  "bootstrap": {
+    "replicates": 2000,
+    "seed": 20261023,
+    "unit": "participant",
+    "refit": false
+  },
+  "second_stage_if_source_passes": "Apply frozen delta fits to the existing402 confirmation natural pairs using already saved equivalent feature transforms and MRI outputs. Same two comparisons/gates. No target-dependent refit, tuning or exclusion. Source and confirmation people are disjoint but the confirmation outcomes were previously inspected; describe as exploratory reuse.",
+  "stop": "If either source or second-stage gate fails, retain the candidate and all results but stop its advancement; no automatic regularization/ROI/window search.",
+  "limits": [
+    "Operational sample floors are not power",
+    "Teacher trained on source participants: behavior distillation target only, not unbiased source diagnostic error",
+    "Intervals conditional on fitted artifacts",
+    "No human benefit, molecular specificity, causal fidelity, independent validation or75-80 attainment follows automatically"
+  ]
+}

@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pares-ad"
+version = "1.1.0"
+description = "Anatomical reference and fixed-budget error review research utilities"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {file = "LICENSE"}
+dependencies = ["numpy>=1.26", "pandas>=2.1", "scipy>=1.11"]
+
+[project.optional-dependencies]
+test = ["scikit-learn>=1.3"]
+
+[tool.setuptools]
+packages = ["pares_ad"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

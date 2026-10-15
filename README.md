@@ -2,30 +2,55 @@
 
 An anatomical reference framework for MRI classifier error review in Alzheimer's disease.
 
-This private repository stores the **1.1.0 submission code package**, byte-for-byte identical to Supplementary Material ESM_3 prepared on 15 October 2026. The complete source tree is inside [ESM_3.zip](ESM_3.zip), including the reusable `pares_ad` library, synthetic examples and tests, 90 original research files, the ADNI weighting correction script, and 19 dated protocols.
+PARES-AD compares an MRI classifier's predictions with a transparent, four-feature anatomical reference: hippocampal volume, entorhinal thickness, ventricular volume, and temporoparietal thickness. It provides itemized reference contributions and scores for prioritizing predictions for review under a fixed workload.
 
-## Download and run
+This repository contains the Python library, synthetic examples, tests, and analysis scripts accompanying the PARES-AD manuscript. Current code version: **1.1.0**.
 
-Download `ESM_3.zip` and extract it. From the extracted `pares_ad_code` directory:
+## Installation
+
+Requires Python 3.10 or newer. The library depends on NumPy, pandas, and SciPy.
 
 ```sh
-python tools/verify_manifest.py
+git clone https://github.com/xia-yanlin/PARES-AD.git
+cd PARES-AD
 python -m pip install .
+```
+
+For the synthetic tests and examples:
+
+```sh
 python -m pip install -r requirements-test.txt
 python tools/run_tests.py
 python demo/run_demo.py 200
 ```
 
-Python 3.10 or newer is required. The package README and `docs/REPRODUCIBILITY.md` give the full usage instructions and map manuscript results to analysis scripts. The manifest verifies a clean extracted package before installation creates local build files.
+The example generates synthetic source and target cohorts and reports fixed-budget review yields with 200 bootstrap resamples. It does not require ADNI or NACC data.
 
-## Version and verification
+## Repository structure
 
-- Version: 1.1.0.
-- 17 synthetic tests passed; offline local installation and installed-package import verified.
-- The package includes the original restricted-data parity check and its run record for ADNI and both NACC cohorts. This is a check of the stated saved-score and aggregate comparisons, not a complete rerun from raw MRI data.
-- The corrected ADNI local-refit block uses the configuration-equal training weights specified in the protocol. The original analysis and the separate correction are retained.
-- Archive SHA-256: `487f491836529e55caa0753e0eb0f0b19e88a026156e00e52888f7602f3d061f`.
+| Directory | Contents |
+| --- | --- |
+| [`pares_ad/`](pares_ad/) | Anatomical reference, case reports, review scores, local cross-fitting, and bootstrap evaluation |
+| [`demo/`](demo/) | Synthetic data and a runnable example |
+| [`tests/`](tests/) | Synthetic tests and restricted-data parity checks |
+| [`paper_scripts/`](paper_scripts/) | Original paper analysis scripts and the separate ADNI weighting correction |
+| [`protocols/`](protocols/) | Dated analysis protocols |
+| [`docs/`](docs/) | Input requirements, reproduction guide, and implementation notes |
 
-No participant-level data, predictions, model checkpoints or access credentials are included. Original-data reproduction requires authorized ADNI/NACC access and the project inputs described inside the archive. The package contains its MIT license.
+## Using the library
 
-The repository is private pending publication. No public release has been made.
+The library includes confidence-only scores (`C`), binary anatomical disagreement (`A`), continuous reference opposition (`P`), and a committee comparator (`CE`). Locally fitted comparators use participant-level cross-fitting.
+
+See the [runnable example](demo/run_demo.py) and [data contract](docs/DATA_CONTRACT.md) for input columns and usage.
+
+## Reproducing the paper
+
+The [reproduction guide](docs/REPRODUCIBILITY.md) maps manuscript results to analysis scripts. [Implementation notes](docs/NOTES.md) describe weighting, review budgets, uncertainty estimates, and the ADNI local-refit correction. [Validation records](docs/validation/) document synthetic tests, saved-result comparisons, and source provenance.
+
+No participant-level data, predictions, or model checkpoints are distributed. Reproducing the original analyses requires authorized access to [ADNI](https://ida.loni.usc.edu/) and [NACC](https://naccdata.org/) data and the project inputs described in the reproduction guide. The synthetic example runs independently of those data.
+
+## Citation and license
+
+If you use this code, please cite *PARES-AD: An anatomical reference framework for MRI review in Alzheimer's disease*. Publication details will be added when available.
+
+[MIT License](LICENSE).

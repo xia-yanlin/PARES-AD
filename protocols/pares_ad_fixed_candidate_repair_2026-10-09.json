@@ -1,0 +1,18 @@
+{
+  "analysis_id": "PARES_AD_FIXED_CANDIDATE_COMMON_POPULATION_REPAIR_2026_10_09",
+  "role": "Posthoc methodological repair; existing confirmation outcomes already known",
+  "authorization": "User goal: improve scientific results themselves to 75-80; first concrete step is repair of the existing comparator evaluation",
+  "question": "Do the historically selected candidate references actually have comparable source-domain diagnostic performance when evaluated on identical people, domains and weights?",
+  "primary_population": "650 source participants with frozen outer MRI predictions, one row per participant, seven domains",
+  "secondary_populations": ["The same 650 people with the historical 5184 model-case multiplicities, identical for every reference", "Full source 729 people across nine domains, one row per participant for every reference"],
+  "fixed_candidates": [624,773,846,151,3,662,550,461,56,730],
+  "historical_lead_candidate": 624,
+  "reference_fit": "Replay existing preprocessing and monotone logistic L2=0.1; train on the same source baseline excluding each evaluated domain; no parameter tuning",
+  "primary_comparison": "Candidate 624 minus AD reference: AUROC and Brier on the primary common population",
+  "matching_description": "Both observed absolute AUROC and Brier gaps at most 0.01; this is a descriptive check, not a formal equivalence conclusion",
+  "uncertainty": "2000 paired participant bootstrap resamples for lead candidate performance gaps on the primary population; seed 20261009; fixed predictions, no refitting, no multiplicity adjustment",
+  "reporting": "Report all ten fixed candidates in original order; do not replace the lead candidate with whichever now looks closest",
+  "validation": ["Replay all original candidate metrics on 729 source people", "Replay original AD metrics with 5184 source rows and the published one-person AD metrics", "Enforce identical keys, labels and weights before each comparison"],
+  "excluded": ["New ROI search", "Candidate reselection", "New MRI model training or inference", "Changes to frozen confirmation endpoints", "FW6", "Human recruitment or simulated human results", "English or figure production"],
+  "decision_rule": "If common-population matching still fails, report the repair as methodological progress without upgrading anatomical specificity or claiming the overall score goal has been reached. Choose further work by the remaining scientific bottleneck, not by more candidate searches."
+}

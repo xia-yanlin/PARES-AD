@@ -1,0 +1,6 @@
+# Environment used for the analysis scripts in this directory
+numpy==2.5.1
+pandas==3.0.3
+scipy==1.18.0
+scikit-learn==1.9.0
+torch==2.12.1

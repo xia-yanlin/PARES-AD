@@ -1,0 +1,52 @@
+{
+  "status": "FROZEN_BEFORE_NEW_METHOD_RESULTS",
+  "created_utc": "2026-10-09T09:07:12.866228+00:00",
+  "authorization": "User explicitly requested 尝试改进方法本身 after previous external-resource block.",
+  "hypothesis": "A global linear anatomical projection may miss smooth nonlinear feature-output relationships. An additive cubic-spline surrogate may improve frozen-classifier behavior reconstruction beyond both the existing linear AD4 and a flexible scalar reference.",
+  "scope": "Method-development experiment within approved PARES-AD; not FW6, a new disease, clinical validation or human study.",
+  "methods": {
+    "AD4_LINEAR": {
+      "input": "four original oriented severities",
+      "model": "StandardScaler plus Ridge(alpha=1), existing baseline"
+    },
+    "REF1_LINEAR": {
+      "input": "reference probability clipped [0.0001,0.9999] then logit",
+      "model": "StandardScaler plus Ridge(alpha=1), existing baseline"
+    },
+    "AD4_ADDITIVE": {
+      "input": "same four original severities",
+      "model": "Per-input cubic B-splines, 3 quantile knots, include_bias=False: 4 bases per input, 16 total; scale bases, fit Ridge; constant extrapolation"
+    },
+    "REF1_FLEXIBLE": {
+      "input": "same clipped scalar reference logit",
+      "model": "Cubic B-splines, 15 quantile knots, include_bias=False: 16 total; same scaling, Ridge and tuning; constant extrapolation"
+    }
+  },
+  "alpha_grid": [
+    0.1,
+    1.0,
+    10.0,
+    100.0
+  ],
+  "tuning": "For each family/configuration and outer target domain, use only other development domains. Select alpha by inner leave-one-domain-out mean absolute error, pooling inner participants equally. All spline knots/scalers refit inside each inner training split. Tie selects larger alpha. Linear baselines fixed at original alpha1.",
+  "evaluation": "Outer development domain held out from surrogate fitting and tuning. Each participant averaged across available configurations, then equal weight per participant. No loss filtering or sparse-domain deletion.",
+  "upstream_limitation": "Existing development classifier predictions and cross-fitted concepts are frozen artifacts. Underlying classifiers/reference preprocessing across other folds are not fully nested for this new surrogate CV. This is conditional method-development evidence, not a new end-to-end independent validation. Prior confirmation and repeat-scan outcomes are already known.",
+  "primary": "Participant-average absolute error of reconstructed frozen classifier logit.",
+  "contrasts": [
+    "AD4_LINEAR minus AD4_ADDITIVE",
+    "REF1_FLEXIBLE minus AD4_ADDITIVE"
+  ],
+  "development_continuation_gate": "Both contrasts: at least 10% relative MAE reduction, paired participant percentile 95% interval lower bound above0, and at least7/9 configurations with lower MAE. This pragmatic method-development threshold is not a clinical minimum effect.",
+  "bootstrap": {
+    "replicates": 2000,
+    "seed": 20261021,
+    "unit": "participant, preserve all configuration rows",
+    "refitting": false,
+    "limitation": "Intervals conditional on all fitted surrogate/source artifacts; do not capture model-selection uncertainty."
+  },
+  "second_stage_if_gate_passes": "Freeze source-selected per-domain/configuration models before reconstructing the existing 402 repeat-scan pairs. Evaluate change MAE against original AD4 and REF1 plus new flexible REF1 on all3269 pairs, with the same joint practical and directional thresholds; strictly exploratory reuse, not independent confirmation. No source or confirmation refit after viewing pair metrics.",
+  "if_gate_fails": "Stop this additive candidate; retain all development results. Do not automatically try additional knots, interactions, ROIs or unfreeze confirmation data to select a variant.",
+  "interpretation": "Better behavior approximation is an intermediate methodological property. It does not establish diagnosis, causal fidelity, error-review gain, human utility, or achievement of the75-80 scientific goal.",
+  "implementation_reference": "https://scikit-learn.org/1.6/modules/generated/sklearn.preprocessing.SplineTransformer.html",
+  "preservation": "New script and output directory only. Existing raw data, models, predictions, endpoints and manuscript conclusions unchanged."
+}

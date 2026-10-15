@@ -1,0 +1,22 @@
+{
+ "version": "1.1.0",
+ "date": "2026-10-15",
+ "synthetic_tests": {
+  "passed": 17,
+  "python": "3.13.16",
+  "numpy": "2.5.3",
+  "pandas": "3.0.5",
+  "scipy": "1.18.1",
+  "scikit_learn": "1.9.1"
+ },
+ "parity_with_original_analysis": {
+  "result": "PARITY OK",
+  "cohorts": [
+   "ADNI",
+   "NACC strict",
+   "NACC date/description"
+  ],
+  "details": "PARITY_RESULT.txt"
+ },
+ "paper_scripts_parsed": 85
+}

@@ -1,0 +1,60 @@
+Parity check of pares_ad 1.1.0 against the original analysis
+Run (UTC): 2026-10-15T14:07:04Z
+Python 3.10.12 | numpy 2.2.6 | pandas 2.3.3
+Command: python tests/parity_with_saved_scores.py --root <project root>
+
+[1] adni: max |refit - saved| by score {'C': '3.10e-04', 'A': '5.95e-04', 'K': '7.65e-04', 'P': '1.63e-03'}
+[1] uid: max |refit - saved| by score {'C': '1.04e-03', 'A': '1.90e-04', 'K': '5.96e-04', 'P': '1.86e-03'}
+[1] unique_date_description: max |refit - saved| by score {'C': '1.04e-03', 'A': '1.90e-04', 'K': '5.96e-04', 'P': '2.21e-03'}
+[2] adni A minus C 0.05: library 5.24 (-1.47, 12.54); original 5.24 (-1.47, 12.54); max diff 1.6e-05
+[2] adni A minus C 0.10: library 1.13 (-3.16, 5.26); original 1.13 (-3.16, 5.26); max diff 1.6e-06
+[2] adni A minus C 0.20: library -0.75 (-2.58, 2.17); original -0.75 (-2.58, 2.17); max diff 3.0e-06
+[2] adni P minus C 0.05: library 12.07 (3.19, 21.12); original 12.07 (3.19, 21.12); max diff 3.5e-05
+[2] adni P minus C 0.10: library 9.09 (2.47, 14.70); original 9.09 (2.47, 14.70); max diff 2.9e-05
+[2] adni P minus C 0.20: library -0.10 (-3.33, 3.68); original -0.10 (-3.33, 3.68); max diff 2.2e-06
+[3] adni CE 0.05: library yield 50.21; reported 50.21; diff 2.6e-05
+[3] adni CE 0.10: library yield 45.30; reported 45.30; diff 3.9e-05
+[3] adni CE 0.20: library yield 35.17; reported 35.17; diff 8.5e-06
+[3] adni Cx 0.05: library yield 42.43; reported 42.43; diff 3.4e-06
+[3] adni Cx 0.10: library yield 41.48; reported 41.48; diff 2.5e-05
+[3] adni Cx 0.20: library yield 34.42; reported 34.42; diff 1.6e-05
+[3] adni CEx 0.05: library yield 51.33; reported 51.33; diff 3.0e-06
+[3] adni CEx 0.10: library yield 44.37; reported 44.37; diff 2.9e-05
+[3] adni CEx 0.20: library yield 33.61; reported 33.61; diff 9.0e-06
+[3] adni Ax 0.05: library yield 48.12; reported 48.12; diff 8.3e-06
+[3] adni Ax 0.10: library yield 42.72; reported 42.72; diff 1.5e-05
+[3] adni Ax 0.20: library yield 34.62; reported 34.62; diff 4.8e-06
+[3] adni Px 0.05: library yield 59.68; reported 59.68; diff 2.1e-05
+[3] adni Px 0.10: library yield 50.82; reported 50.82; diff 1.4e-05
+[3] adni Px 0.20: library yield 35.27; reported 35.27; diff 2.9e-06
+[3] uid CE 0.05: library yield 57.60; reported 57.60; diff 2.8e-05
+[3] uid CE 0.10: library yield 50.98; reported 50.98; diff 1.5e-05
+[3] uid CE 0.20: library yield 47.15; reported 47.15; diff 4.1e-06
+[3] uid Cx 0.05: library yield 80.23; reported 80.23; diff 1.6e-05
+[3] uid Cx 0.10: library yield 71.81; reported 71.81; diff 3.8e-07
+[3] uid Cx 0.20: library yield 52.57; reported 52.57; diff 2.3e-05
+[3] uid CEx 0.05: library yield 63.95; reported 63.95; diff 2.2e-05
+[3] uid CEx 0.10: library yield 67.35; reported 67.35; diff 3.9e-05
+[3] uid CEx 0.20: library yield 54.96; reported 54.96; diff 1.9e-06
+[3] uid Ax 0.05: library yield 79.37; reported 79.37; diff 2.1e-05
+[3] uid Ax 0.10: library yield 71.60; reported 71.60; diff 3.9e-05
+[3] uid Ax 0.20: library yield 50.23; reported 50.23; diff 3.9e-05
+[3] uid Px 0.05: library yield 79.67; reported 79.67; diff 2.3e-05
+[3] uid Px 0.10: library yield 73.11; reported 73.11; diff 4.5e-05
+[3] uid Px 0.20: library yield 57.02; reported 57.02; diff 4.3e-05
+[3] unique_date_description CE 0.05: library yield 60.54; reported 60.54; diff 1.9e-05
+[3] unique_date_description CE 0.10: library yield 53.34; reported 53.34; diff 2.8e-05
+[3] unique_date_description CE 0.20: library yield 44.63; reported 44.63; diff 2.8e-05
+[3] unique_date_description Cx 0.05: library yield 85.94; reported 85.94; diff 4.3e-05
+[3] unique_date_description Cx 0.10: library yield 80.18; reported 80.18; diff 4.3e-05
+[3] unique_date_description Cx 0.20: library yield 61.71; reported 61.71; diff 3.0e-05
+[3] unique_date_description CEx 0.05: library yield 86.67; reported 86.67; diff 6.5e-06
+[3] unique_date_description CEx 0.10: library yield 81.07; reported 81.07; diff 4.5e-05
+[3] unique_date_description CEx 0.20: library yield 62.00; reported 62.00; diff 3.5e-05
+[3] unique_date_description Ax 0.05: library yield 86.25; reported 86.25; diff 1.4e-05
+[3] unique_date_description Ax 0.10: library yield 79.68; reported 79.68; diff 1.3e-05
+[3] unique_date_description Ax 0.20: library yield 61.84; reported 61.84; diff 3.7e-05
+[3] unique_date_description Px 0.05: library yield 86.49; reported 86.49; diff 3.9e-05
+[3] unique_date_description Px 0.10: library yield 80.11; reported 80.11; diff 2.1e-05
+[3] unique_date_description Px 0.20: library yield 62.06; reported 62.06; diff 1.8e-05
+PARITY OK
