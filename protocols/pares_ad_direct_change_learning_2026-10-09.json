@@ -1,7 +1,7 @@
 {
   "status": "FROZEN_BEFORE_SOURCE_FOLLOWUP_INFERENCE",
   "created_utc": "2026-10-09T09:31:59.614390+00:00",
-  "authorization": "User authorized method redesign. This is natural-change behavior reconstruction, not clinical progression, FW6 or the stopped synthetic local trial.",
+  "development_context": "Natural-change behavior reconstruction, separate from clinical progression and the stopped synthetic local-perturbation study.",
   "motivation": "Two previous methods improved cross-sectional level approximation but did not establish individual-change increment. Test whether matching the training target to observed output differences improves this property.",
   "source_pairs": "Use all218 pairs in frozen source feasibility manifest; no replacement, trimming, additional visits or diagnosis-based selection.",
   "target": "For each frozen target-domain/configuration ensemble, logit(mean calibrated followup probability)-logit(mean calibrated anchor probability); original5 seeds, clipping[1e-4,1-1e-4].",
@@ -31,6 +31,6 @@
     "Operational sample floors are not power",
     "Teacher trained on source participants: behavior distillation target only, not unbiased source diagnostic error",
     "Intervals conditional on fitted artifacts",
-    "No human benefit, molecular specificity, causal fidelity, independent validation or75-80 attainment follows automatically"
+    "No human benefit, molecular specificity, causal fidelity or independent validation follows automatically"
   ]
 }

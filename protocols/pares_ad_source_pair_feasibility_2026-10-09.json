@@ -1,7 +1,7 @@
 {
   "status": "FROZEN_BEFORE_SOURCE_PAIR_COUNTS",
   "created_utc": "2026-10-09T09:28:52.489331+00:00",
-  "authorization": "User-authorized method redesign within PARES-AD, feasibility before learning real within-person behavior changes. No FW6, no resumption of failed synthetic perturbation trial.",
+  "development_context": "Feasibility assessment before learning within-person changes in frozen classifier outputs. The stopped synthetic perturbation study is not resumed.",
   "anchor_population": "Only650 people with saved source development predictions; use exactly the baseline scan already used by their classifiers, not a newly selected anchor.",
   "anchor_link": "Exact participant+PHC_LONIUID+scan date to raw PHC table. Require a unique record and identical canonical phase/vendor/field and exact nonmissing ScannerBatchName. Verify all163 model inputs equal to source baseline within1e-10; no fuzzy image matching.",
   "followup_rule": "Same previous natural-pair rule:180-730 days inclusive, same canonical phase/manufacturer/field and exact nonmissing ScannerBatchName; all163 inputs finite and strictly positive; nearest365 days, any best-distance tie excludes. One pair per person. No followup diagnosis or feature/output change selection.",

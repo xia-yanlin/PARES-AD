@@ -1,8 +1,7 @@
 # PARES-AD content audit: bounded numeric correction
 
-2026-10-09. Authorized by the user's request to finish all possible content
-checks, excluding English and figure/table production. This is an error audit
-of already reported endpoints, not a new experiment or outcome search.
+2026-10-09. This audit checks and corrects already reported endpoints.
+It introduces no new experiment or outcome search.
 
 Inspection found that `crossfit_continuous` returns a centered/scaled residual
 but unscaled residual predictions to `continuous_bootstrap`. The point effect

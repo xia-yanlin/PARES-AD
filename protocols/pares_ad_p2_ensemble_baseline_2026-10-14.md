@@ -1,7 +1,7 @@
 # PARES-AD P2 supplement: cross-classifier disagreement baseline (post hoc, written before the run)
 
 Date written: 2026-10-14, before any P2 result was computed.
-Status: post hoc / exploratory, authorized by the corresponding author on 2026-10-14. No MRI training or inference; saved prediction scores only. Aggregate outputs only.
+Status: post hoc / exploratory. No MRI training or inference; saved prediction scores only. Aggregate outputs only.
 
 ## Purpose
 Reviewers of selective-prediction and error-detection work expect a standard reference-free baseline besides softmax confidence. The nine frozen classifiers already give several predictions per participant, so the committee-style disagreement of those predictions is available without retraining.

@@ -1,7 +1,6 @@
 # PARES-AD comparator and transport audit
 
-Date: 2026-10-08 (Asia/Shanghai). The user explicitly authorized continuation
-of the three proposed improvements. This protocol is recorded before computing
+Date: 2026-10-08 (Asia/Shanghai). This protocol is recorded before computing
 the new comparisons, after ADNI/NACC outcomes and prior analyses were already
 known. Every new result is post hoc/exploratory, not a fresh external confirmation.
 
@@ -12,8 +11,8 @@ known. Every new result is post hoc/exploratory, not a fresh external confirmati
    separate diagnosis composition from within-diagnosis joint behavior.
 3. Prepare a usable human-audit study protocol and response/scoring templates.
    Actual recruitment and participant testing depend on collaborators and
-   institution/data-use requirements; no invitations, invented responses, or
-   claims of human benefit are authorized by this computational audit.
+   institution/data-use requirements. This computational analysis includes no
+   recruitment or participant responses and supplies no evidence of human benefit.
 
 No MRI model training, ROI/threshold search, new disease, new clinical anchor,
 FW6, figures, manuscript edits or outcome-driven method selection. Existing

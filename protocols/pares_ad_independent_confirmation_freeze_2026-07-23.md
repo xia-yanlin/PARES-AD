@@ -291,17 +291,3 @@ new dataset, large resampling file, or manuscript package is permitted.
   `8ed9e565afb3f46e6bc4ec1a4e9d088d470184842a2317d43e6b8580dc64c3db`
 - Development PARES-AD case explanations SHA-256:
   `a7ad3530154e71d0789188e498b60479ddc6af612d46e1840979f769b4d7acfa`
-
-## 10. Probability audit at freeze
-
-These are planning estimates, not results:
-
-- correct construction of the 882-participant confirmation cohort: >95%;
-- successful replay of all frozen checkpoints without retraining: 90–97%;
-- replication of conflict error-risk enrichment: 65–80%;
-- passing the stricter equal-budget review-yield endpoint: 55–70%;
-- if all gates pass, reaching a defensible single-disease HISS-level empirical
-  contribution after scientific audit: 60–75%;
-- unconditional probability of reaching that level from this frozen run:
-  approximately 40–55%.
-

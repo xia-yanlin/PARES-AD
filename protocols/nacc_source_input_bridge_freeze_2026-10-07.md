@@ -4,7 +4,7 @@ Frozen before masked source replay and before any NACC model inference.
 
 ## Purpose
 
-NACC75 lacks bilateral bankssts, frontalpole and temporalpole thickness and volume (12 of 163 required numeric inputs including eTIV). All four original AD-reference concepts and the equal-complexity control inputs are available. Establish whether the existing saved training-median missing-value handler materially changes source behavior under this exact structural missingness pattern. This is a source-only measurement/implementation assessment for the authorized PARES-AD external extension, not a revival of concept-use model selection or a replacement external endpoint.
+NACC75 lacks bilateral bankssts, frontalpole and temporalpole thickness and volume (12 of 163 required numeric inputs including eTIV). All four original AD-reference concepts and the equal-complexity control inputs are available. Establish whether the existing saved training-median missing-value handler materially changes source behavior under this exact structural missingness pattern. This is a source-only measurement/implementation assessment for the PARES-AD external evaluation. It retains the original external endpoint.
 
 ## Frozen computation
 

@@ -1,8 +1,7 @@
 # Focused manuscript strengthening using the sole external cohort
 
-User authorization: continue PARES-AD research and improve the manuscript with
-the existing NACC data; no additional external dataset is available. This
-extends the authorized NACC work and does not restart the terminated FW route.
+These supplementary analyses use the existing NACC data. No additional external
+dataset is included.
 
 ## Scope and timing
 

@@ -1,7 +1,6 @@
 # PARES-AD P1 supplement: prevalence reweighting and flag-matched controls
 
-Date: 2026-10-14. The user explicitly authorized these two computational analyses
-in this session ("补上"). This protocol is recorded BEFORE the analyses are run.
+Date: 2026-10-14. This protocol is recorded before the two computational analyses are run.
 All results are post hoc / exploratory: ADNI and NACC outcomes and all prior
 analyses were already known. Nothing here is a new confirmation, and none of it
 replaces a frozen endpoint (the ADNI primary endpoint stays negative; the frozen

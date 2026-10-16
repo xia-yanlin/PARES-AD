@@ -1,8 +1,15 @@
 # PARES-AD biological specificity and confidence-blind-spot freeze
 
+> **Correction dated 2026-10-09:** The historical PACC interval and positive
+> clinical-severity conclusion in the execution record below were superseded.
+> The corrected AD-minus-control estimate is 0.0184151, with a 95% interval
+> of [-0.0025473, 0.0381420]; clinical-severity specificity is not established.
+> See `pares_ad_content_correction_2026-10-09.md` and Supplementary Section S4.
+> The historical record is retained to document the original analysis.
+
 **Freeze ID:** `PARES-AD-BIOSPECIFICITY-v1`  
 **Freeze date:** 2026-07-23  
-**Status:** `COMPLETED_AFTER_USER_AUTHORIZED_CONTINUATION`  
+**Status:** `COMPLETED_AFTER_CONTINUATION_AMENDMENT`  
 **Research role:** one deepening experiment inside the unified PARES-AD
 evidence chain; not a new research direction
 
@@ -39,10 +46,10 @@ projected 2,595 seconds for the frozen 2,000-replicate analysis, exceeding the
 the full adjusted/control/high-confidence analysis was not run. The timing
 failure is an execution stop, not a scientific result.
 
-### User-authorized continuation amendment
+### Continuation amendment
 
-Before any PET/PACC value was accessed, the user rejected treating the
-conservative count and runtime planning gates as scientific stopping rules.
+Before any PET/PACC value was accessed, the count and runtime planning gates
+were reclassified as feasibility and resource-management warnings.
 The analysis is therefore resumed with all cohorts, anchors, ROIs, linkage
 windows, endpoints, covariates, comparators, and bootstrap definitions
 unchanged. The amendment changes interpretation only:
@@ -416,18 +423,3 @@ Generate only:
 No participant identifier, participant-level result, anchor-value table,
 checkpoint, model, intermediate tensor, figure, or manuscript package may be
 written.
-
-## 12. Probability audit at freeze
-
-Planning estimates before outcome access:
-
-- complete replay and linkage: 90–97%;
-- FTP feasibility gate: 70–85%;
-- AD reference tau validity: 55–70% conditional on feasibility;
-- AD-over-control specificity: 45–60% conditional on feasibility;
-- conflict tau adjudication: 45–60% conditional on feasibility;
-- conditional/high-confidence complementarity: 65–80%;
-- all conjunctive biological-specificity gates: approximately 25–40%;
-- resulting unified single-disease framework reaching local HISS-example
-  scientific-value level: approximately 30–45%, because external-institution
-  validation and human benefit remain unavailable.

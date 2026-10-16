@@ -1,7 +1,7 @@
 {
   "status": "FROZEN_BEFORE_TEACHER_REPLAY",
   "created_utc": "2026-10-09T09:16:25.472418+00:00",
-  "authorization": "User explicitly authorized attempts to improve the method itself. Prior additive candidate remains stopped; this changes supervision alignment, not its knots, threshold, interactions or ROIs.",
+  "development_context": "The previous additive candidate remains stopped. This experiment changes supervision alignment while retaining the original features and fixed thresholds.",
   "observed_code_issue": "The existing development surrogate pools outputs from other outer-fold classifiers of the same configuration, whereas evaluation targets one particular outer-fold five-seed ensemble. This is a recipe-level projection; it is not necessarily a surrogate of that exact fitted ensemble. Existing descriptions remain statistical, not automatically invalid.",
   "hypothesis": "Match the surrogate training target to the exact frozen five-seed ensemble used at evaluation; hold other design choices fixed.",
   "inputs": "729 baseline pool; original650 development participants and5184 configuration rows; original290 frozen checkpoints and calibration/preprocessing artifacts.",

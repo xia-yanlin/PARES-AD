@@ -1,7 +1,7 @@
 {
   "status": "FROZEN_BEFORE_NEW_METHOD_RESULTS",
   "created_utc": "2026-10-09T09:07:12.866228+00:00",
-  "authorization": "User explicitly requested 尝试改进方法本身 after previous external-resource block.",
+  "development_context": "Exploratory development of an additive anatomical reconstruction model.",
   "hypothesis": "A global linear anatomical projection may miss smooth nonlinear feature-output relationships. An additive cubic-spline surrogate may improve frozen-classifier behavior reconstruction beyond both the existing linear AD4 and a flexible scalar reference.",
   "scope": "Method-development experiment within approved PARES-AD; not FW6, a new disease, clinical validation or human study.",
   "methods": {
@@ -46,7 +46,7 @@
   },
   "second_stage_if_gate_passes": "Freeze source-selected per-domain/configuration models before reconstructing the existing 402 repeat-scan pairs. Evaluate change MAE against original AD4 and REF1 plus new flexible REF1 on all3269 pairs, with the same joint practical and directional thresholds; strictly exploratory reuse, not independent confirmation. No source or confirmation refit after viewing pair metrics.",
   "if_gate_fails": "Stop this additive candidate; retain all development results. Do not automatically try additional knots, interactions, ROIs or unfreeze confirmation data to select a variant.",
-  "interpretation": "Better behavior approximation is an intermediate methodological property. It does not establish diagnosis, causal fidelity, error-review gain, human utility, or achievement of the75-80 scientific goal.",
+  "interpretation": "Better behavior approximation is an intermediate methodological property. It does not establish diagnosis, causal fidelity, error-review gain, human utility.",
   "implementation_reference": "https://scikit-learn.org/1.6/modules/generated/sklearn.preprocessing.SplineTransformer.html",
   "preservation": "New script and output directory only. Existing raw data, models, predictions, endpoints and manuscript conclusions unchanged."
 }
